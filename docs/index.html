@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Every source is 'self' or 'none' now that the typefaces are served from
+     this origin: the policy no longer names a single outside host, which is
+     the strongest possible form of the claim the page makes about your data. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- The tab title and description follow the language the reader picked; the
+     Open Graph and Twitter tags below deliberately do not. Social unfurlers
+     fetch the raw HTML and never run scripts, so localising those client-side
+     would change nothing for them while making the two sets disagree. -->
+<title data-i18n="meta.title">FollowLens — See Who Unfollowed You on Instagram &amp; GitHub</title>
+<!-- Kept under ~160 characters. Google truncates a snippet at roughly that
+     length, and this one ran to 268 — the last third, which carried the
+     differentiator, was never being shown. The long form of the same claim
+     lives in the SoftwareApplication description below, where length costs
+     nothing. -->
+<meta name="description" data-i18n-content="meta.desc" content="Instagram tells you the number. FollowLens tells you the names — who unfollowed, who is new, who never followed back. Your account or any you can open. Free.">
+<link rel="canonical" href="https://followlens.mtvrkan.com/">
+<!-- The Turkish page is generated from this one by scripts/build-tr.mjs. It is
+     a separate URL because an unfurler never runs the language switch: it reads
+     the raw HTML, so Turkish Open Graph tags and a Turkish card can only live
+     at an address that has them baked in. -->
+<link rel="alternate" hreflang="en" href="https://followlens.mtvrkan.com/">
+<link rel="alternate" hreflang="tr" href="https://followlens.mtvrkan.com/tr/">
+<link rel="alternate" hreflang="x-default" href="https://followlens.mtvrkan.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="mtvrkan">
+<meta name="theme-color" content="#0e0e12">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/icon32.png">
+<link rel="icon" type="image/png" sizes="128x128" href="assets/img/icons/icon128.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon128.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="FollowLens — See Who Unfollowed You on Instagram &amp; GitHub">
+<meta property="og:description" content="Instagram tells you the number. FollowLens tells you the names. Entirely on your device — no servers, no account.">
+<meta property="og:image" content="https://followlens.mtvrkan.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FollowLens — see who unfollowed you on Instagram and GitHub">
+<meta property="og:url" content="https://followlens.mtvrkan.com/">
+<meta property="og:site_name" content="FollowLens">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FollowLens — See Who Unfollowed You">
+<meta name="twitter:description" content="Instagram tells you the number. FollowLens tells you the names.">
+<meta name="twitter:image" content="https://followlens.mtvrkan.com/assets/img/og-image.png">
+<meta name="twitter:image:alt" content="FollowLens — see who unfollowed you on Instagram and GitHub">
+
+<!-- The two faces the first screen actually paints with, fetched in parallel
+     with the stylesheet instead of waiting for it to be parsed first. The
+     latin-ext pair is deliberately not preloaded: an English reader never
+     needs it, and a Turkish one picks it up a moment later. crossorigin is
+     required on font preloads even same-origin, or the preload is discarded
+     and the file is fetched twice. -->
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://followlens.mtvrkan.com/#app",
+      "name": "FollowLens",
+      "applicationCategory": "SocialNetworkingApplication",
+      "applicationSubCategory": "Browser Extension",
+      "operatingSystem": "Chrome, Brave",
+      "browserRequirements": "Requires Chrome or Brave",
+      "softwareVersion": "1.0.0",
+      "description": "Track follower and following lists on Instagram and GitHub — your own account or any profile whose list already opens for you. See who unfollowed, who's new, and who doesn't follow back, entirely on your device.",
+      "url": "https://followlens.mtvrkan.com/",
+      "downloadUrl": "https://chromewebstore.google.com/detail/jpejnlkciiphkcnlncljikpgekbcglfl",
+      "license": "https://github.com/mtvrkan/followlens/blob/main/LICENSE",
+      "isAccessibleForFree": true,
+      "inLanguage": ["en", "tr"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "See who unfollowed you on Instagram and GitHub",
+        "See who doesn't follow you back",
+        "Track any profile you can already open, not only your own",
+        "Follower growth analytics and scan comparison",
+        "Export to CSV, JSON, HTML report and PDF",
+        "10 languages with right-to-left support",
+        "All data stored locally, no servers and no account"
+      ],
+      "author": { "@id": "https://followlens.mtvrkan.com/#author" }
+    },
+    { "@type": "Person", "@id": "https://followlens.mtvrkan.com/#author", "name": "mtvrkan", "url": "https://mtvrkan.com" },
+    { "@type": "WebSite", "@id": "https://followlens.mtvrkan.com/#website", "url": "https://followlens.mtvrkan.com/", "name": "FollowLens", "publisher": { "@id": "https://followlens.mtvrkan.com/#author" } },
+    {
+      "@type": "FAQPage",
+      "@id": "https://followlens.mtvrkan.com/#faq",
+      "mainEntity": [
+              {
+                      "@type": "Question",
+                      "name": "Do you need my password?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No, and there is nowhere to enter one. FollowLens has no account system. It reads the lists on the profiles you open, in your own signed-in browser session, which means it can only ever see what you can see."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Can I track an account that isn't mine?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Yes, as long as it opens for you. FollowLens scans whatever profile you have open and finds the followers or following list itself, so a public profile — or a private one you already follow — becomes a tracked account with its own history, comparisons and exports. An account that will not open for you cannot be read by the extension either."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Does it work on GitHub too?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Yes, and not as an afterthought. GitHub gets the same scans, comparisons, analytics and exports as Instagram. FollowLens reads the server-rendered followers and following tabs, and prefers the public REST API, which needs no session."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Can the platform tell I'm using it?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Auto-Collect produces the same requests your own scrolling does, paced irregularly rather than on a fixed beat. Automated collection may still conflict with a platform’s terms of service, so FollowLens keeps it opt-in, visible and stoppable. The choice is yours."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Why does a scan sometimes come up a few accounts short?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A platform’s header count can include accounts its list endpoint never returns, such as restricted or deactivated ones. Rather than round up, FollowLens shows what it collected against what was expected and tells you the list is not fully loaded."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Where does my data actually live?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "On the machine you scanned with, in your browser’s IndexedDB. There is no server, no sync and no account, which means a scan taken on your laptop will not appear on your phone unless you export it and move it yourself."
+                      }
+              },
+              {
+                      "@type": "Question",
+                      "name": "Is it really free?",
+                      "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Yes, and it is MIT licensed. There is no paid tier, no upsell and no telemetry to sell. If it is useful to you, a star on GitHub is the entire business model."
+                      }
+              }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a.skip">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══ Icon sprite ══════════════════════════════════════════════════════════
+     Drawn on Lucide's grid (24px box, 2px stroke, round caps and joins),
+     because the extension's own UI is built on lucide-react — the site and the
+     product are drawn by the same hand. Inline rather than an icon font: no
+     CDN request, nothing to go stale, no invisible-icon flash on load. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- The extension's bg-gradient-brand, so the mark on this page and the
+         icon in the toolbar are the same object. Kept in sync by hand with
+         assets/img/logo.svg, which is still the source the PNGs render from —
+         the mark is inlined here rather than loaded as <img src="logo.svg">
+         because a host that serves .svg as application/octet-stream (some
+         static servers do) makes Chrome refuse to paint it, and a logo that
+         depends on a Content-Type header is a logo that can vanish. -->
+    <linearGradient id="fl-plate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d3ff0"/>
+      <stop offset="1" stop-color="#3b5bf0"/>
+    </linearGradient>
+  </defs>
+  <!-- A lens with two accounts inside it: one solid, one already fading out. -->
+  <symbol id="i-mark" viewBox="0 0 128 128">
+    <rect x="4" y="4" width="120" height="120" rx="29" fill="url(#fl-plate)"/>
+    <g fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round">
+      <circle cx="54" cy="55" r="24"/>
+      <path d="M71 72 L95 96"/>
+    </g>
+    <circle cx="45.5" cy="55" r="8" fill="#fff"/>
+    <circle cx="62.5" cy="55" r="6.8" fill="#fff" opacity=".42"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <!-- Instagram's verified badge, not a bare tick: the scalloped blue seal is
+       the thing people actually recognise, and a plain check beside a handle
+       reads as a list marker instead. Twelve lobes on a 24px grid; the seal is
+       stroked in its own fill colour with round joins, which rounds the points
+       the way the real mark does without a path full of arcs. The blue is
+       written in rather than tokenised: it is Instagram's, not the site's, and
+       a badge that turns black when a stylesheet is slow is not a badge. -->
+  <symbol id="i-verified" viewBox="0 0 24 24">
+    <path fill="#0095f6" stroke="#0095f6" stroke-width="1.7" stroke-linejoin="round"
+          d="M12 0.9L14.3 3.4L17.55 2.39L18.29 5.71L21.61 6.45L20.6 9.7L23.1 12L20.6 14.3L21.61 17.55L18.29 18.29L17.55 21.61L14.3 20.6L12 23.1L9.7 20.6L6.45 21.61L5.71 18.29L2.39 17.55L3.4 14.3L0.9 12L3.4 9.7L2.39 6.45L5.71 5.71L6.45 2.39L9.7 3.4Z"/>
+    <path fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m7.9 12.2 2.7 2.7 5.5-5.6"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-7 7 7-7 7 7"/></symbol>
+  <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.09-.2-.36-1.02.07-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.43 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-user-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/></symbol>
+  <symbol id="i-user-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+  <symbol id="i-user-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+  <symbol id="i-user-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 8 5 5M22 8l-5 5"/></symbol>
+  <symbol id="i-user-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="4"/><path d="M10.3 15H7a4 4 0 0 0-4 4v2"/><circle cx="17" cy="17" r="3"/><path d="m21 21-1.9-1.9"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m7 15 4-5 3.5 3L21 7"/></symbol>
+  <symbol id="i-compare" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M12 2v20"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+  <symbol id="i-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol>
+  <symbol id="i-file-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="m10 13-2 2 2 2M14 17l2-2-2-2"/></symbol>
+  <symbol id="i-printer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 3.2a.5.5 0 0 1 .9 0l2.3 4.7 5.2.76a.5.5 0 0 1 .28.85l-3.76 3.66.89 5.17a.5.5 0 0 1-.73.53L12 17.44l-4.63 2.43a.5.5 0 0 1-.72-.53l.88-5.17-3.75-3.66a.5.5 0 0 1 .27-.85l5.2-.76z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m2.3 12.87 8.87 4.04a2 2 0 0 0 1.66 0l8.87-4.04M2.3 17.87l8.87 4.04a2 2 0 0 0 1.66 0l8.87-4.04"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 21.1 10.55 19.8C5.4 15.16 2 12.09 2 8.3 2 5.23 4.42 2.8 7.5 2.8c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 2.8C19.58 2.8 22 5.23 22 8.3c0 3.79-3.4 6.86-8.55 11.5z"/></symbol>
+</svg>
+
+<!-- ══ Header ═══════════════════════════════════════════════════════════════
+     Full width and transparent at the top of the page; on the first scroll it
+     contracts into a centred floating island. See .hdr in style.css. -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#main" aria-label="FollowLens">
+      <svg class="mark" width="30" height="30" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="brand-name">FollowLens</span>
+    </a>
+    <nav class="hnav" id="hnav" aria-label="Primary">
+      <a href="#platforms" data-i18n="nav.plat">Platforms</a>
+      <a href="#stalk" data-i18n="nav.stalk">Who's watching</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#dash" data-i18n="nav.dash">The app</a>
+      <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
+    </nav>
+    <!-- The only header control below 1040px, where the nav is hidden. There
+         used to be a menu button and a full-screen panel here; the panel
+         listed the sections in the order you meet them by scrolling, which is
+         the only thing this page does. -->
+    <div class="lang" role="group" aria-label="Language / Dil">
+      <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang-btn="tr" aria-pressed="false">TR</button>
+    </div>
+  </div>
+</header>
+
+<button type="button" class="totop" id="totop" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 50 50" aria-hidden="true">
+    <circle class="trk" cx="25" cy="25" r="23"/>
+    <circle class="val" cx="25" cy="25" r="23" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+  </svg>
+  <svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+</button>
+
+<main id="main">
+<div class="spine" id="spine" aria-hidden="true"></div>
+
+  <!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="aura" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="plats reveal">
+          <span class="plat ig"><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></span>Instagram</span>
+          <span class="plat gh"><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg></span>GitHub</span>
+        </div>
+        <h1 class="reveal">
+          <span data-i18n="hero.h1a">Someone unfollowed you.</span>
+          <span class="grad h1-light" data-i18n="hero.h1b">But who?</span>
+        </h1>
+        <p class="lede reveal" data-i18n="hero.lede">Scan once. Every scan after gives you the names: who left, who's new, who never followed back. Instagram and GitHub, entirely on your device.</p>
+        <div class="cta reveal">
+          <a class="btn btn-primary btn-lg" href="#get" data-i18n="hero.cta1">Install free</a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/mtvrkan/followlens" target="_blank" rel="noopener">
+            <svg class="i i-lg" aria-hidden="true"><use href="#i-github"/></svg>
+            <span data-i18n="hero.cta2">Read the source</span>
+          </a>
+        </div>
+        <p class="micro reveal">
+          <span><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.n1">Open source</span></span>
+          <span><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.n2">No account</span></span>
+          <span><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.n3">Nothing leaves your device</span></span>
+        </p>
+      </div>
+
+      <div class="pcard-stage reveal" aria-hidden="true">
+        <div class="pcard-glow"></div>
+        <div class="igc" data-ig>
+          <div class="igc-top">
+            <span class="igc-ring"><span class="igc-av" style="--h:275">M</span></span>
+            <div class="igc-id">
+              <b>mtvrkan <svg class="i i-verified" aria-hidden="true"><use href="#i-verified"/></svg></b>
+              <span class="igc-sub">Mehmet Türkan · Instagram</span>
+            </div>
+          </div>
+          <dl class="igc-stats">
+            <div><dd>184</dd><dt data-i18n="hero.cPosts">posts</dt></div>
+            <div class="live"><dd data-count data-num="1284">1,284</dd><dt data-i18n="hero.cFollowers">followers</dt></div>
+            <div><dd>318</dd><dt data-i18n="hero.cFollowing">following</dt></div>
+          </dl>
+          <div class="leavers">
+            <span class="leaver" data-leaver style="--h:14"><i>S</i><b>@sumeyye.blt</b></span>
+            <span class="leaver" data-leaver style="--h:196"><i>I</i><b>@irmak.ozk</b></span>
+            <span class="leaver" data-leaver style="--h:322"><i>A</i><b>@alina.krm</b></span>
+          </div>
+        </div>
+        <div class="verdict" data-verdict>
+          <svg class="mark" width="28" height="28" aria-hidden="true"><use href="#i-mark"/></svg>
+          <span>
+            <b><span data-verdict-n>3</span> <span data-i18n="hero.verdict">people unfollowed you</span></b>
+            <!-- Split around a <time> so the date can be filled in at runtime.
+                 A single data-i18n string could not hold it: the key is written
+                 with textContent, which would replace the element. -->
+            <span><span data-i18n="hero.vsubA">Compared with your scan from</span> <time data-yesterday></time><span data-i18n="hero.vsubB"></span></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 01 · THE PROBLEM ═══════════════════════════════════════════════════ -->
+  <section class="band" id="why" data-band>
+    <span class="ghost" aria-hidden="true">01</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>01</b><i></i><span data-i18n="why.label">The problem</span></p>
+        <h2 data-i18n="why.h2">Your count changes. The names stay hidden.</h2>
+        <p class="lede" data-i18n="why.p">Instagram shows 1,284, then 1,281. Three people left, and the platform keeps no record of who they were. FollowLens keeps that record for you.</p>
+      </div>
+      <div class="versus reveal" aria-hidden="true">
+        <div class="card vs-card vs-before">
+          <span class="mono vs-label" data-i18n="why.before">What the platform shows</span>
+          <div class="vs-num"><b data-count-down data-num="1284">1,284</b></div>
+          <p class="vs-mystery"><span data-i18n="why.mystery">Three people left. No names.</span></p>
+        </div>
+        <div class="vs-arrow"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+        <div class="card card-hi vs-card vs-after">
+          <span class="mono vs-label" data-i18n="why.after">What FollowLens shows</span>
+          <ul class="rowlist">
+            <li style="--h:14"><i>S</i><b>@sumeyye.blt</b><span data-date="-6">6 Aug</span></li>
+            <li style="--h:196"><i>I</i><b>@irmak.ozk</b><span data-date="-7">5 Aug</span></li>
+            <li style="--h:322"><i>A</i><b>@alina.krm</b><span data-date="-8">4 Aug</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 · PLATFORMS ═════════════════════════════════════════════════════ -->
+  <section class="band" id="platforms" data-band>
+    <span class="ghost" aria-hidden="true">02</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>02</b><i></i><span data-i18n="plat.label">Two platforms</span></p>
+        <h2 data-i18n="plat.h2">Instagram and GitHub, fully supported</h2>
+        <p class="lede" data-i18n="plat.p">Both platforms get the complete product: scans, comparisons, analytics and exports. Only the way each list has to be read is different.</p>
+      </div>
+      <div class="split reveal stag">
+        <article class="card pf pf-ig">
+          <div class="pf-head">
+            <span class="pf-badge"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></span>
+            <h3>Instagram</h3>
+          </div>
+          <p data-i18n="plat.igP">Instagram loads its lists as you scroll, so rows you have not reached yet do not exist. FollowLens opens the list, walks it to the end, and starts again if a pass finishes below the profile’s own count.</p>
+          <ul class="pfacts">
+            <li><span class="k mono" data-i18n="plat.k1">Reads</span><span data-i18n="plat.igF1">The followers/following dialog, plus the site's own list responses</span></li>
+            <li><span class="k mono" data-i18n="plat.k2">Paging</span><span data-i18n="plat.igF2">Auto-scroll, with the site's own list endpoint as the faster path</span></li>
+            <li><span class="k mono" data-i18n="plat.k3">Note</span><span data-i18n="plat.igF3">Paging is not deterministic. A single pass can miss real followers, so the list is walked again.</span></li>
+          </ul>
+        </article>
+        <article class="card pf pf-gh">
+          <div class="pf-head">
+            <span class="pf-badge"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg></span>
+            <h3>GitHub</h3>
+          </div>
+          <p data-i18n="plat.ghP">GitHub renders its lists on the server and pages them with a Next link. FollowLens follows that link page by page, and uses GitHub’s public REST API where it can.</p>
+          <ul class="pfacts">
+            <li><span class="k mono" data-i18n="plat.k1">Reads</span><span data-i18n="plat.ghF1">The rendered followers/following tabs, scoped to the list itself</span></li>
+            <li><span class="k mono" data-i18n="plat.k2">Paging</span><span data-i18n="plat.ghF2">The list’s own Next link, or api.github.com. No sign-in required.</span></li>
+            <li><span class="k mono" data-i18n="plat.k3">Note</span><span data-i18n="plat.ghF3">Profile links in the header and footer sit beside an avatar exactly like list rows do. Those are excluded.</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 · WHO'S WATCHING ════════════════════════════════════════════════
+       The section that says out loud what people actually use this for. Every
+       claim here is bounded by what the extension really does: it scans
+       whatever profile is open in your own session, so the line is not
+       public-vs-private but openable-vs-not. A private account you already
+       follow shows you its followers, so it scans; one that will not open for
+       you will not open for the extension either. Saying "public only" here
+       was both wrong and needlessly narrow. -->
+
+  <section class="band stalk" id="stalk" data-band>
+    <div class="aura" aria-hidden="true"><i></i></div>
+    <span class="ghost" aria-hidden="true">03</span>
+    <div class="wrap">
+      <div class="head reveal" style="max-width:none;text-align:center">
+        <p class="idx" style="justify-content:center"><b>03</b><i></i><span data-i18n="stalk.label">Not only your account</span></p>
+        <p class="stalk-line">
+          <!-- The rotating word is the subject of the sentence, so with it
+               hidden from assistive technology the rest is a question with
+               nobody in it. One static sentence naming all five is read
+               instead, and every visible part is hidden from the reader. -->
+          <span class="sr-only" data-i18n="stalk.srLine">Did your ex, your crush, that friend, your boss or your rival follow someone new this week?</span>
+          <span class="rotator" data-rotator aria-hidden="true">
+            <span data-i18n="stalk.w1">Your ex</span>
+            <span data-i18n="stalk.w2">Your crush</span>
+            <span data-i18n="stalk.w3">That friend</span>
+            <span data-i18n="stalk.w4">Your boss</span>
+            <span data-i18n="stalk.w5">Your rival</span>
+          </span>
+          <span aria-hidden="true" data-i18n="stalk.post">followed someone new this week?</span>
+        </p>
+        <p class="lede stalk-sub" data-i18n="stalk.sub">FollowLens scans whatever profile you have open, so the account does not have to be yours. Point it at any that already opens for you — public, or private and one you follow — and it tracks that account like your own: who they followed, who they dropped, and who left them.</p>
+      </div>
+
+      <ul class="watch reveal stag">
+        <li>
+          <span class="k"><svg class="i i-lg" aria-hidden="true"><use href="#i-user-search"/></svg></span>
+          <h3 data-i18n="stalk.c1t">Anyone you can open</h3>
+          <p data-i18n="stalk.c1p">If the profile opens for you, it scans: any public account, or a private one you follow. Press Start and it becomes a tracked account of its own.</p>
+        </li>
+        <li>
+          <span class="k"><svg class="i i-lg" aria-hidden="true"><use href="#i-user-plus"/></svg></span>
+          <h3 data-i18n="stalk.c2t">Who they added</h3>
+          <p data-i18n="stalk.c2p">Their following list, diffed between two scans. The names that were not there last time are exactly who they have followed since, in order.</p>
+        </li>
+        <li>
+          <span class="k"><svg class="i i-lg" aria-hidden="true"><use href="#i-user-minus"/></svg></span>
+          <h3 data-i18n="stalk.c3t">Who left them</h3>
+          <p data-i18n="stalk.c3p">The same arithmetic in reverse, over their followers: the names that were there last time and are gone now — everyone who left them since.</p>
+        </li>
+      </ul>
+
+      <div class="probe reveal" aria-hidden="true">
+        <div class="card probe-card">
+          <div class="probe-who">
+            <span class="av" style="--h:196">K</span>
+            <div><b>@kilincesad</b><span>Muhammed Esad Kılınç · <span data-i18n="stalk.scan1">First scan</span></span></div>
+            <span class="probe-when mono" data-date="-8">4 AUG</span>
+          </div>
+          <ul class="probe-delta">
+            <li><span class="num" data-num="412">412</span> <b data-i18n="stalk.following">following</b></li>
+            <li><span class="num" data-num="1077">1,077</span> <b data-i18n="stalk.followers">followers</b></li>
+          </ul>
+          <p class="probe-note" data-i18n="stalk.baseline">Nothing to compare against yet. This one is the baseline.</p>
+        </div>
+        <div class="probe-mid"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></div>
+        <div class="card card-hi probe-card">
+          <div class="probe-who">
+            <span class="av" style="--h:196">K</span>
+            <div><b>@kilincesad</b><span>Muhammed Esad Kılınç · <span data-i18n="stalk.scan2">Today</span></span></div>
+            <span class="probe-when mono" data-date="0">12 AUG</span>
+          </div>
+          <ul class="probe-delta">
+            <li><svg class="i plus" aria-hidden="true"><use href="#i-user-plus"/></svg><b>@sumeyye.blt</b><span class="mono" style="margin-left:auto" data-i18n="stalk.added">added</span></li>
+            <li><svg class="i plus" aria-hidden="true"><use href="#i-user-plus"/></svg><b>@semih_can_bastas</b><span class="mono" style="margin-left:auto" data-i18n="stalk.added">added</span></li>
+            <li><svg class="i minus" aria-hidden="true"><use href="#i-user-minus"/></svg><b>@selin.ayd</b><span class="mono" style="margin-left:auto" data-i18n="stalk.dropped">dropped</span></li>
+          </ul>
+          <p class="probe-note" data-i18n="stalk.note">Two scans, eight days apart. The difference between them is the whole feature.</p>
+        </div>
+      </div>
+
+      <p class="micro reveal" style="margin-top:26px;max-width:640px;margin-inline:auto" data-i18n="stalk.fine">It sees exactly what your own session sees: a public list, or a private one you already have access to. A list that will not open for you will not open for it either. Nothing is sent anywhere, and the profile you scan is never notified, because there is no server to notify it.</p>
+    </div>
+  </section>
+
+  <!-- ══ 04 · HOW ═══════════════════════════════════════════════════════════ -->
+  <section class="band" id="how" data-band>
+    <span class="ghost" aria-hidden="true">04</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>04</b><i></i><span data-i18n="how.label">How it works</span></p>
+        <h2 data-i18n="how.h2">Three steps to your first scan</h2>
+        <p class="lede" data-i18n="how.p">Nothing runs on its own. You open the profile, you start the scan, and you save it.</p>
+      </div>
+      <div class="how-grid">
+        <ol class="steps reveal stag">
+          <li><span class="n">1</span><h3 data-i18n="how.s1t">Open a profile</h3><p data-i18n="how.s1p">Yours, or any that already opens for you, in the session you are signed in with. You do not have to find the list — Auto-Collect opens the followers or following one itself.</p></li>
+          <li><span class="n">2</span><h3 data-i18n="how.s2t">Press Start</h3><p data-i18n="how.s2p">Auto-Collect walks the list for you. A badge on the page shows progress and stops it whenever you want.</p></li>
+          <li><span class="n">3</span><h3 data-i18n="how.s3t">Save the scan</h3><p data-i18n="how.s3p">The first scan becomes your baseline. Every scan after it answers the question the platform will not.</p></li>
+        </ol>
+        <div class="scanner reveal" data-scanner aria-hidden="true">
+          <div class="scan-win"><ul class="scan-rows" data-scan-rows></ul><div class="scan-fade"></div></div>
+          <div class="scan-badge">
+            <span class="scan-spin"></span>
+            <span data-scan-state data-i18n="how.scanning">Collecting</span>
+            <b data-scan-count>0</b>
+            <span class="scan-stop" data-i18n="how.stop">Stop</span>
+          </div>
+          <div class="scan-bar"><i data-scan-bar></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 · RESULTS ═══════════════════════════════════════════════════════ -->
+  <section class="band" id="results" data-band>
+    <span class="ghost" aria-hidden="true">05</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>05</b><i></i><span data-i18n="res.label">What you see</span></p>
+        <h2 data-i18n="res.h2">Four answers, one click each</h2>
+        <p class="lede" data-i18n="res.p">Every category is one click away, and every row opens the profile.</p>
+      </div>
+      <div class="results reveal" data-results aria-hidden="true">
+        <div class="res-tabs">
+          <button type="button" class="res-tab" data-tab="0" data-icon="i-user-minus" ><span data-i18n="res.t1">Not following back</span> <span class="n">42</span></button>
+          <button type="button" class="res-tab" data-tab="1" data-icon="i-user-x" ><span data-i18n="res.t2">Unfollowed you</span> <span class="n">3</span></button>
+          <button type="button" class="res-tab" data-tab="2" data-icon="i-user-plus" ><span data-i18n="res.t3">New followers</span> <span class="n">11</span></button>
+          <button type="button" class="res-tab" data-tab="3" data-icon="i-user-check" ><span data-i18n="res.t4">Mutuals</span> <span class="n">276</span></button>
+        </div>
+        <ul class="res-rows" data-res-rows></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 · THE APP ═══════════════════════════════════════════════════════ -->
+  <section class="band" id="dash" data-band>
+    <span class="ghost" aria-hidden="true">06</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>06</b><i></i><span data-i18n="dash.label">The app</span></p>
+        <h2 data-i18n="dash.h2">A full dashboard, not just a popup</h2>
+        <p class="lede" data-i18n="dash.p">The popup starts scans and shows the headline numbers. Everything else lives in a full page with its own sidebar: history, comparisons, analytics and settings.</p>
+      </div>
+      <div class="tour">
+        <ul class="tour-list reveal stag" role="tablist" aria-label="Dashboard sections">
+          <li role="presentation">
+            <button type="button" role="tab" aria-selected="true" aria-controls="pane-0" id="tab-0" data-pane="0">
+              <span class="k"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg></span>
+              <span><h3 data-i18n="dash.t1">Follower list</h3><p data-i18n="dash.p1">Five counts for the current scan, and the list behind each of them.</p></span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" aria-selected="false" aria-controls="pane-1" id="tab-1" data-pane="1" tabindex="-1">
+              <span class="k"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span>
+              <span><h3 data-i18n="dash.t2">Detailed analysis</h3><p data-i18n="dash.p2">A growth chart across every scan, over a date range you can narrow.</p></span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" aria-selected="false" aria-controls="pane-2" id="tab-2" data-pane="2" tabindex="-1">
+              <span class="k"><svg class="i" aria-hidden="true"><use href="#i-compare"/></svg></span>
+              <span><h3 data-i18n="dash.t3">Compare</h3><p data-i18n="dash.p3">Any two scans side by side, in both directions.</p></span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" aria-selected="false" aria-controls="pane-3" id="tab-3" data-pane="3" tabindex="-1">
+              <span class="k"><svg class="i" aria-hidden="true"><use href="#i-history"/></svg></span>
+              <span><h3 data-i18n="dash.t4">Scan history</h3><p data-i18n="dash.p4">Every scan you have saved, with the quality it was collected at.</p></span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="win reveal" aria-hidden="true">
+          <div class="win-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="addr" data-i18n="dash.win">followlens · dashboard</span>
+          </div>
+          <div class="win-body">
+            <!-- The real sidebar: a platform picker, an account picker and the
+                 saved scans. Constant while the main area switches, exactly as
+                 in the extension. -->
+            <div class="win-side">
+              <span class="win-lbl" data-i18n="dash.sPlatform">Select a platform</span>
+              <span class="win-sel">
+                <span class="dot"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></span>
+                Instagram
+                <svg class="i chev" aria-hidden="true"><use href="#i-chevron"/></svg>
+              </span>
+              <span class="win-lbl" data-i18n="dash.sAccount">Select an account</span>
+              <span class="win-sel">@mtvrkan<svg class="i chev" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+              <span class="win-lbl" data-i18n="dash.sScans">Scans</span>
+              <ul class="win-scans" data-lit-target="scans">
+                <li class="cur" data-date="0" data-date-pad data-date-time="14:20">12 Aug · 14:20</li>
+                <li data-date="-4" data-date-pad data-date-time="09:12">08 Aug · 09:12</li>
+                <li data-date="-8" data-date-pad data-date-time="21:40">04 Aug · 21:40</li>
+              </ul>
+            </div>
+            <div class="win-main">
+              <div class="win-tabs">
+                <span data-lit-target="tab0" class="on" data-i18n="dash.tabList">Follower List</span>
+                <span data-lit-target="tab1" data-i18n="dash.tabAnalysis">Detailed Analysis</span>
+              </div>
+
+              <div class="win-pane on" id="pane-0" role="tabpanel" aria-labelledby="tab-0" data-lit="tab0">
+                <div class="win-h"><b>@mtvrkan</b><span class="mono" data-date="0" data-date-pad data-date-time="14:20">12 AUG · 14:20</span></div>
+                <dl class="win-stats">
+                  <div class="win-stat"><dd class="num" data-num="1281">1,281</dd><dt data-i18n="dash.kFollowers">Followers collected</dt></div>
+                  <div class="win-stat warn"><dd class="num">42</dd><dt data-i18n="dash.kNfb">Not following back</dt></div>
+                  <div class="win-stat bad"><dd class="num">3</dd><dt data-i18n="dash.kLost">Unfollowed you</dt></div>
+                </dl>
+                <div class="win-skel"><i style="width:100%"></i><i style="width:78%"></i><i style="width:56%"></i></div>
+              </div>
+
+              <div class="win-pane" id="pane-1" role="tabpanel" aria-labelledby="tab-1" data-lit="tab1">
+                <div class="win-subtabs"><span class="on" data-i18n="dash.tabOverview">Overview</span><span data-i18n="dash.tabCompare">Compare</span></div>
+                <div class="win-h"><b data-i18n="dash.chartTitle">Follower history</b><span class="mono" data-date-range="-8,0" data-date-pad data-date-range-tight>04 → 12 AUG</span></div>
+                <svg class="win-chart" viewBox="0 0 320 96" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M4 74 L56 66 L108 70 L160 44 L212 50 L264 26 L316 32" fill="none" stroke="var(--brand-lit)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 74 L56 66 L108 70 L160 44 L212 50 L264 26 L316 32 L316 96 L4 96 Z" fill="url(#winFade)" stroke="none"/>
+                  <defs><linearGradient id="winFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(258 92% 70%)" stop-opacity="0.32"/><stop offset="1" stop-color="hsl(258 92% 70%)" stop-opacity="0"/></linearGradient></defs>
+                </svg>
+              </div>
+
+              <div class="win-pane" id="pane-2" role="tabpanel" aria-labelledby="tab-2" data-lit="tab1">
+                <div class="win-subtabs"><span data-i18n="dash.tabOverview">Overview</span><span class="on" data-i18n="dash.tabCompare">Compare</span></div>
+                <div class="win-h"><b data-i18n="dash.t3">Compare</b><span class="mono" data-date-range="-8,0" data-date-pad>04 AUG → 12 AUG</span></div>
+                <ul class="probe-delta">
+                  <li><svg class="i plus" aria-hidden="true"><use href="#i-user-plus"/></svg><b>@nesibe.tan</b><span class="pill good" style="margin-left:auto" data-i18n="res.pillNew">New follower</span></li>
+                  <li><svg class="i minus" aria-hidden="true"><use href="#i-user-minus"/></svg><b>@sumeyye.blt</b><span class="pill bad" style="margin-left:auto" data-i18n="res.pillLeft">Unfollowed you</span></li>
+                  <li><svg class="i plus" aria-hidden="true"><use href="#i-user-plus"/></svg><b>@arda.gnc</b><span class="pill good" style="margin-left:auto" data-i18n="res.pillNew">New follower</span></li>
+                </ul>
+              </div>
+
+              <div class="win-pane" id="pane-3" role="tabpanel" aria-labelledby="tab-3" data-lit="scans">
+                <div class="win-h"><b data-i18n="dash.t4">Scan history</b><span class="mono">7</span></div>
+                <ul class="probe-delta">
+                  <li><span class="mono" data-date="0" data-date-pad>12 AUG</span><b class="num" style="margin-left:auto" data-num="1281">1,281</b><span class="pill good">99.8%</span></li>
+                  <li><span class="mono" data-date="-4" data-date-pad>08 AUG</span><b class="num" style="margin-left:auto" data-num="1284">1,284</b><span class="pill good">100%</span></li>
+                  <li><span class="mono" data-date="-8" data-date-pad>04 AUG</span><b class="num" style="margin-left:auto" data-num="1279">1,279</b><span class="pill warn">98.1%</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 07 · SCAN QUALITY ══════════════════════════════════════════════════ -->
+  <section class="band" id="quality" data-band>
+    <span class="ghost" aria-hidden="true">07</span>
+    <div class="wrap quality">
+      <div class="reveal">
+        <p class="idx"><b>07</b><i></i><span data-i18n="q.label">Honesty</span></p>
+        <h2 data-i18n="q.h2">It tells you when a scan is incomplete</h2>
+        <p class="lede" data-i18n="q.p">A platform’s own header count can include accounts its list endpoint never returns, such as restricted or deactivated ones. A tracker that rounds up produces a wrong “not following back” list and never admits it.</p>
+        <p style="margin-top:16px" data-i18n="q.p2">FollowLens shows what it collected against what was expected, and will not call a list complete when it knows it is not.</p>
+      </div>
+      <div class="card card-warn qpanel reveal" data-sc aria-hidden="true">
+        <div class="qhead">
+          <span class="mono" data-i18n="q.panel">Scan quality</span>
+          <span class="qverdict"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="q.verdict">Good, with a gap</span></span>
+        </div>
+        <div class="qmeter"><i></i></div>
+        <div class="qnums">
+          <span><b data-sc-num="1281">0</b> <span data-i18n="q.collected">collected</span></span>
+          <span><span data-i18n="q.expected">expected</span> <b data-num="1284">1,284</b></span>
+        </div>
+        <p class="qnote" data-i18n="q.note">Collected 1,281 of the 1,284 this profile reports. The list does not look fully loaded: three accounts the API never returned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 08 · ANALYTICS ═════════════════════════════════════════════════════ -->
+  <section class="band" id="analytics" data-band>
+    <span class="ghost" aria-hidden="true">08</span>
+    <div class="wrap ana">
+      <div class="reveal">
+        <p class="idx"><b>08</b><i></i><span data-i18n="ana.label">Analytics</span></p>
+        <h2 data-i18n="ana.h2">Every scan builds your history</h2>
+        <p class="lede" data-i18n="ana.p">A growth chart, the change at each scan, a date range you can narrow, and a side-by-side view of any two scans you have taken.</p>
+        <ul class="mini">
+          <li><h3><svg class="i" aria-hidden="true"><use href="#i-compare"/></svg><span data-i18n="ana.f1t">Compare any two</span></h3><p data-i18n="ana.f1p">Pick two dates, see exactly what changed between them, in both directions.</p></li>
+          <li><h3><svg class="i" aria-hidden="true"><use href="#i-users"/></svg><span data-i18n="ana.f2t">Several accounts</span></h3><p data-i18n="ana.f2p">Each tracked separately, on either platform, with its own history and labels.</p></li>
+          <li><h3><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg><span data-i18n="ana.f3t">Ignore list</span></h3><p data-i18n="ana.f3p">Hide the accounts you don't want to keep seeing, without deleting the scan.</p></li>
+        </ul>
+      </div>
+      <figure class="card chart reveal" data-sc aria-hidden="true">
+        <figcaption class="mono" data-i18n="ana.chart">Follower history</figcaption>
+        <svg viewBox="0 0 420 220" preserveAspectRatio="none">
+          <defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a480fa" stop-opacity=".34"/><stop offset="100%" stop-color="#a480fa" stop-opacity="0"/></linearGradient></defs>
+          <g class="grid"><line x1="0" y1="40" x2="420" y2="40"/><line x1="0" y1="90" x2="420" y2="90"/><line x1="0" y1="140" x2="420" y2="140"/><line x1="0" y1="190" x2="420" y2="190"/></g>
+          <path class="area" d="M0,196 L0,180 60,168 120,150 180,158 240,120 300,96 360,72 420,44 L420,220 L0,220 Z" fill="url(#fill)"/>
+          <path class="line" d="M0,180 60,168 120,150 180,158 240,120 300,96 360,72 420,44" fill="none"/>
+          <g class="dots"><circle cx="60" cy="168" r="3.4"/><circle cx="120" cy="150" r="3.4"/><circle cx="180" cy="158" r="3.4"/><circle cx="240" cy="120" r="3.4"/><circle cx="300" cy="96" r="3.4"/><circle cx="360" cy="72" r="3.4"/><circle cx="420" cy="44" r="4.4"/></g>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ 09 · EXPORT ════════════════════════════════════════════════════════ -->
+  <section class="band" id="export" data-band>
+    <span class="ghost" aria-hidden="true">09</span>
+    <div class="wrap exp">
+      <div class="fan reveal" data-sc aria-hidden="true">
+        <div class="fan-card"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-table"/></svg></span><b>CSV</b><span data-i18n="exp.csv">Opens clean in Excel</span></div>
+        <div class="fan-card"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-braces"/></svg></span><b>JSON</b><span data-i18n="exp.json">Everything, unflattened</span></div>
+        <div class="fan-card"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-file-code"/></svg></span><b>HTML</b><span data-i18n="exp.html">A report with the chart</span></div>
+        <div class="fan-card"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-printer"/></svg></span><b>PDF</b><span data-i18n="exp.pdf">Straight to print</span></div>
+      </div>
+      <div class="reveal">
+        <p class="idx"><b>09</b><i></i><span data-i18n="exp.label">Export</span></p>
+        <h2 data-i18n="exp.h2">Export your data in four formats</h2>
+        <p class="lede" data-i18n="exp.p">Four formats, the columns you choose, in your language. That includes a printable report with the growth chart, and a full JSON backup that restores your history on another machine.</p>
+        <p style="margin-top:16px" data-i18n="exp.p2">Export is also the way out. Nothing is held back to keep you here: the JSON backup is your history in full, it restores on another machine, and it is still readable the day you uninstall. An app that owns your data does not hand it over that easily.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 10 · PRIVACY ═══════════════════════════════════════════════════════ -->
+  <section class="band" id="privacy" data-band>
+    <span class="ghost" aria-hidden="true">10</span>
+    <div class="wrap priv">
+      <div class="reveal">
+        <p class="idx"><b>10</b><i></i><span data-i18n="priv.label">Privacy</span></p>
+        <h2 data-i18n="priv.h2">There is no server to send it to</h2>
+        <p class="lede" data-i18n="priv.p">FollowLens has no backend, no analytics and no account system. Your scans live in your browser’s own database, and the only requests it makes go to the platform you already have open.</p>
+        <ul class="checks reveal stag">
+          <li><span class="tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><b data-i18n="priv.c1b">No password, ever.</b> <span data-i18n="priv.c1">It reads the lists on the profile you opened, in the session you're already signed in with.</span></span></li>
+          <li><span class="tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><b data-i18n="priv.c2b">It only reads.</b> <span data-i18n="priv.c2">Never posts, follows, unfollows or messages on your behalf.</span></span></li>
+          <li><span class="tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><b data-i18n="priv.c3b">You start it.</b> <span data-i18n="priv.c3">Collection starts on a click, shows a badge while it runs, and stops the moment you say so.</span></span></li>
+          <li><span class="tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><b data-i18n="priv.c4b">You end it.</b> <span data-i18n="priv.c4">Delete one account's history or wipe everything. No copy survives elsewhere.</span></span></li>
+        </ul>
+        <!-- The whole sentence used to be the link, so a full-width underlined
+             rule sat under the section. Prose first, then a short label that
+             looks like something to click. -->
+        <p class="micro priv-more">
+          <span data-i18n="priv.linkPre">Every request it makes is written down, and the code that makes them is public.</span>
+          <a href="privacy.html" data-i18n="priv.link">Read the privacy policy</a>
+        </p>
+      </div>
+      <div class="vault reveal" aria-hidden="true">
+        <span class="vault-ring"></span>
+        <div class="vault-box">
+          <span class="mono" data-i18n="priv.device">Your device</span>
+          <svg class="mark mark-lg" width="56" height="56" aria-hidden="true"><use href="#i-mark"/></svg>
+          <span class="vault-zero">0<span data-i18n="priv.blocked">bytes out</span></span>
+        </div>
+        <span class="pkt" style="--d:0s"></span><span class="pkt" style="--d:1.15s"></span>
+        <span class="pkt" style="--d:2.3s"></span><span class="pkt" style="--d:3.45s"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 11 · WHY NOT THE OTHERS ════════════════════════════════════════════ -->
+  <section class="band" id="compare" data-band>
+    <span class="ghost" aria-hidden="true">11</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>11</b><i></i><span data-i18n="cmp.label">The alternative</span></p>
+        <h2 data-i18n="cmp.h2">How FollowLens compares</h2>
+        <p class="lede" data-i18n="cmp.p">Most free follower apps ask for your password, upload your list to a server you cannot see, and charge you to unblur the answer. That business model needs your data. FollowLens does not have one.</p>
+      </div>
+      <div class="cmp-wrap reveal">
+        <table class="cmp">
+          <caption data-i18n="cmp.cap">Compared against the pattern those apps share, not against any single named product.</caption>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col" class="col-us">FollowLens</th>
+              <th scope="col" data-i18n="cmp.them">Typical follower app</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" data-i18n="cmp.r1">Asks for your password</th>
+              <td class="col-us"><span class="cmp-lbl">FollowLens</span><span class="yes"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r1a">Never. There is no login.</span></span></td>
+              <td><span class="cmp-lbl" data-i18n="cmp.them">Typical follower app</span><span class="no"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span data-i18n="cmp.r1b">Usually, or an OAuth token</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp.r2">Where your list goes</th>
+              <td class="col-us"><span class="cmp-lbl">FollowLens</span><span class="yes"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r2a">Your browser's own database</span></span></td>
+              <td><span class="cmp-lbl" data-i18n="cmp.them">Typical follower app</span><span class="no"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span data-i18n="cmp.r2b">Their server, kept indefinitely</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp.r3">Cost of the answer</th>
+              <td class="col-us"><span class="cmp-lbl">FollowLens</span><span class="yes"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r3a">Free, all of it</span></span></td>
+              <td><span class="cmp-lbl" data-i18n="cmp.them">Typical follower app</span><span class="no"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span data-i18n="cmp.r3b">Blurred until you subscribe</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp.r4">When a scan is incomplete</th>
+              <td class="col-us"><span class="cmp-lbl">FollowLens</span><span class="yes"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r4a">Says so, and by how much</span></span></td>
+              <td><span class="cmp-lbl" data-i18n="cmp.them">Typical follower app</span><span class="no"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span data-i18n="cmp.r4b">Shows the list anyway</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp.r5">Auditable</th>
+              <td class="col-us"><span class="cmp-lbl">FollowLens</span><span class="yes"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r5a">MIT, every line on GitHub</span></span></td>
+              <td><span class="cmp-lbl" data-i18n="cmp.them">Typical follower app</span><span class="no"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span data-i18n="cmp.r5b">Closed and minified</span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 12 · FAQ ═══════════════════════════════════════════════════════════ -->
+  <section class="band" id="faq" data-band>
+    <span class="ghost" aria-hidden="true">12</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="idx"><b>12</b><i></i><span data-i18n="faq.label">FAQ</span></p>
+        <h2 data-i18n="faq.h2">Frequently asked questions</h2>
+      </div>
+      <div class="faq reveal stag">
+        <details><summary><span data-i18n="faq.q1">Do you need my password?</span><span class="chev"></span></summary><p data-i18n="faq.a1">No, and there is nowhere to enter one. FollowLens has no account system. It reads the lists on the profiles you open, in your own signed-in browser session, which means it can only ever see what you can see.</p></details>
+        <details><summary><span data-i18n="faq.q2">Can I track an account that isn't mine?</span><span class="chev"></span></summary><p data-i18n="faq.a2">Yes, as long as it opens for you. FollowLens scans whatever profile you have open and finds the followers or following list itself, so a public profile — or a private one you already follow — becomes a tracked account with its own history, comparisons and exports. An account that will not open for you cannot be read by the extension either.</p></details>
+        <details><summary><span data-i18n="faq.q3">Does it work on GitHub too?</span><span class="chev"></span></summary><p data-i18n="faq.a3">Yes, and not as an afterthought. GitHub gets the same scans, comparisons, analytics and exports as Instagram. FollowLens reads the server-rendered followers and following tabs, and prefers the public REST API, which needs no session.</p></details>
+        <details><summary><span data-i18n="faq.q4">Can the platform tell I'm using it?</span><span class="chev"></span></summary><p data-i18n="faq.a4">Auto-Collect produces the same requests your own scrolling does, paced irregularly rather than on a fixed beat. Automated collection may still conflict with a platform’s terms of service, so FollowLens keeps it opt-in, visible and stoppable. The choice is yours.</p></details>
+        <details><summary><span data-i18n="faq.q5">Why does a scan sometimes come up a few accounts short?</span><span class="chev"></span></summary><p data-i18n="faq.a5">A platform’s header count can include accounts its list endpoint never returns, such as restricted or deactivated ones. Rather than round up, FollowLens shows what it collected against what was expected and tells you the list is not fully loaded.</p></details>
+        <details><summary><span data-i18n="faq.q6">Where does my data actually live?</span><span class="chev"></span></summary><p data-i18n="faq.a6">On the machine you scanned with, in your browser’s IndexedDB. There is no server, no sync and no account, which means a scan taken on your laptop will not appear on your phone unless you export it and move it yourself.</p></details>
+        <details><summary><span data-i18n="faq.q7">Is it really free?</span><span class="chev"></span></summary><p data-i18n="faq.a7">Yes, and it is MIT licensed. There is no paid tier, no upsell and no telemetry to sell. If it is useful to you, a star on GitHub is the entire business model.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLOSER ═════════════════════════════════════════════════════════════ -->
+  <section class="band closer" id="get">
+    <div class="aura" aria-hidden="true"><i></i></div>
+    <div class="wrap">
+      <h2 class="reveal" data-i18n="end.h2">Find out who left.</h2>
+      <p class="lede reveal" data-i18n="end.p">Install it, run one scan, and the next scan gives you the answer.</p>
+      <!-- ══ STORE URL — THE SAME ID IN TWO PLACES ══════════════════════════
+           The listing's id appears here on the primary button and again as
+           "downloadUrl" in the JSON-LD block at the top of this file. Both are
+           filled in. If the id ever changes, those are the only two places.
+
+           The listing is in review at the time of writing, so this button
+           404s until it is approved — which is why the note beneath still
+           carries "Or install from source", and why that link must keep
+           working. Remove neither before the listing is live. -->
+      <div class="cta reveal">
+        <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/jpejnlkciiphkcnlncljikpgekbcglfl" target="_blank" rel="noopener" data-i18n="end.ctaStore">Add to Chrome — free</a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/mtvrkan/followlens" target="_blank" rel="noopener">
+          <svg class="i i-lg" aria-hidden="true"><use href="#i-star"/></svg>
+          <span data-i18n="end.cta2">Star on GitHub</span>
+        </a>
+      </div>
+      <p class="micro reveal">
+        <!-- Only the browsers actually tested. The rest of Chromium will very
+             likely run it, but "very likely" is not a claim a landing page
+             gets to make — they go on the list once they have been checked. -->
+        <span data-i18n="end.noteA">Chrome and Brave. No account, no permissions beyond the two sites it reads.</span>
+        <a href="https://github.com/mtvrkan/followlens/blob/main/INSTALL.md" target="_blank" rel="noopener" data-i18n="end.noteB">Or install from source</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <a class="brand" href="#main">
+      <svg class="mark" width="30" height="30" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="brand-name">FollowLens</span>
+    </a>
+    <!-- Deliberately not translated: a signature reads the same in every
+         language, so this line carries no data-i18n key. -->
+    <p class="credit">
+      Developed with
+      <svg class="i heart" aria-hidden="true"><use href="#i-heart"/></svg>
+      <span class="sr-only">love</span>
+      by <a href="https://mtvrkan.com" target="_blank" rel="noopener">mtvrkan</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

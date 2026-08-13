@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://followlens.mtvrkan.com/sitemap.xml

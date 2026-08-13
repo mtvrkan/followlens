@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "FollowLens",
+    "description": "Extension name (brand, untranslated)"
+  },
+  "appDesc": {
+    "message": "Instagram と GitHub でフォローバックしていない人を確認し、フォロー解除を追跡します - すべて端末内で完結します。",
+    "description": "Extension description shown in the store and extensions page"
+  },
+  "indicatorCollecting": {
+    "message": "FollowLensが収集中",
+    "description": "On-page indicator label while auto-collect runs"
+  },
+  "indicatorStop": {
+    "message": "停止",
+    "description": "On-page indicator stop button"
+  }
+}

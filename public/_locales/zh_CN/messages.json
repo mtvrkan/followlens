@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "FollowLens",
+    "description": "Extension name (brand, untranslated)"
+  },
+  "appDesc": {
+    "message": "查看谁没有回关你，并追踪 Instagram 和 GitHub 上的取关 - 全部在你的设备上完成。",
+    "description": "Extension description shown in the store and extensions page"
+  },
+  "indicatorCollecting": {
+    "message": "FollowLens 正在收集",
+    "description": "On-page indicator label while auto-collect runs"
+  },
+  "indicatorStop": {
+    "message": "停止",
+    "description": "On-page indicator stop button"
+  }
+}

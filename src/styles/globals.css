@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --primary: 258 90% 58%;
+    --primary-2: 231 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --border: 240 5.9% 90%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 33%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 42%;
+    --warning-foreground: 0 0% 98%;
+    /* Modal scrim. Black in both themes on purpose — it is a shadow over the
+       page, not a surface, so it must NOT invert with the theme the way
+       `--foreground` does (that made the dark theme's dialog wash the whole
+       page white instead of dimming it). */
+    --overlay: 0 0% 0%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 8% 8%;
+    --foreground: 0 0% 96%;
+    --card: 240 8% 11.5%;
+    --card-foreground: 0 0% 96%;
+    --primary: 258 92% 70%;
+    --primary-2: 231 92% 68%;
+    --primary-foreground: 240 10% 3.9%;
+    --muted: 240 6% 17%;
+    --muted-foreground: 240 5% 68%;
+    --border: 240 6% 20%;
+    --destructive: 0 70% 63%;
+    --destructive-foreground: 240 10% 3.9%;
+    --success: 142 70% 48%;
+    --success-foreground: 240 10% 3.9%;
+    --warning: 38 92% 58%;
+    --warning-foreground: 240 10% 3.9%;
+    --overlay: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* No webfont: a strict CSP forbids remote fonts and none is bundled, so the
+       previous 'Inter' first entry only ever applied on machines that happened
+       to have Inter installed locally — the same UI rendered with different
+       metrics for different users. This is the platform UI stack instead, which
+       is what the rest of the design was actually tuned against. */
+    font-family:
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      'Noto Sans',
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji';
+  }
+}
+
+@layer components {
+  .toast-enter {
+    animation: toast-in 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "FollowLens",
+    "description": "Extension name (brand, untranslated)"
+  },
+  "appDesc": {
+    "message": "Découvrez qui ne vous suit pas en retour et suivez les désabonnements sur Instagram et GitHub - entièrement sur votre appareil.",
+    "description": "Extension description shown in the store and extensions page"
+  },
+  "indicatorCollecting": {
+    "message": "FollowLens collecte",
+    "description": "On-page indicator label while auto-collect runs"
+  },
+  "indicatorStop": {
+    "message": "Arrêter",
+    "description": "On-page indicator stop button"
+  }
+}
