@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "FollowLens",
+    "description": "Extension name (brand, untranslated)"
+  },
+  "appDesc": {
+    "message": "Veja quem não segue você de volta e acompanhe quem deixou de seguir no Instagram e no GitHub - tudo no seu dispositivo.",
+    "description": "Extension description shown in the store and extensions page"
+  },
+  "indicatorCollecting": {
+    "message": "FollowLens está coletando",
+    "description": "On-page indicator label while auto-collect runs"
+  },
+  "indicatorStop": {
+    "message": "Parar",
+    "description": "On-page indicator stop button"
+  }
+}

@@ -1,0 +1,17 @@
+# Normalize text files to LF in the repository, native line endings on checkout
+* text=auto
+
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.md    text eol=lf
+*.xml   text eol=lf
+*.txt   text eol=lf
+*.yml   text eol=lf
+
+*.png   binary
+*.ico   binary
+*.zip   binary

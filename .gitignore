@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+*.tsbuildinfo
+*.zip
+
+# Local agent configuration and scratch notes — tooling for whoever is working
+# on this, not part of the extension.
+.claude/
+CLAUDE.md
+yeniden.md
+
+# Copy-paste buffer for the store dashboard. The descriptions themselves live
+# in STORE-LISTING.md; this is that content flattened for pasting, and two
+# copies of the same prose in the repo would drift.
+store-descriptions.txt
+
+# Console snippet that fills the extension's own IndexedDB with fabricated
+# scans, so the store screenshots can be taken from the real dashboard without
+# any real person's handle in them. A capture-session tool, not part of the
+# extension — and nothing should be able to import it by accident.
+seed-demo-data.js
+
+# Store screenshots, cropped and scaled for upload. Submission artefacts, not
+# repo content.
+store-screenshots/
+
+# Brand sources: the HTML the social card and both store tiles are rasterised
+# from, the icon renderer, and the rendered store tiles. Deliberately outside
+# the repository — the MIT licence covers the code, not the name or the mark,
+# and a fork is expected to bring its own. The rendered social card is the one
+# exception and stays in docs/, because the site has to serve it.
+brand-sources/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.local

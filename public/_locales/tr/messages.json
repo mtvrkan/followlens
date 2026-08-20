@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "FollowLens",
+    "description": "Extension name (brand, untranslated)"
+  },
+  "appDesc": {
+    "message": "Seni geri takip etmeyenleri gör ve Instagram ile GitHub’daki takipten çıkmaları izle - tamamen kendi cihazında.",
+    "description": "Extension description shown in the store and extensions page"
+  },
+  "indicatorCollecting": {
+    "message": "FollowLens veri topluyor",
+    "description": "On-page indicator label while auto-collect runs"
+  },
+  "indicatorStop": {
+    "message": "Durdur",
+    "description": "On-page indicator stop button"
+  }
+}
